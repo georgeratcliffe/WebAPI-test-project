@@ -66,8 +66,8 @@ namespace WebAPI.Controllers
                     {
                         new Claim("UserID", user.Id.ToString())
                     }),
-                    Expires = DateTime.UtcNow.AddMinutes(20),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)),SecurityAlgorithms.HmacSha256Signature)
+                    Expires = DateTime.UtcNow.AddMinutes(300),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)),SecurityAlgorithms.HmacSha256)
                 };
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);
